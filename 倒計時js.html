@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒計時js</title>
+    <link rel="stylesheet" href="Untitled-3.css">
+</head>
+<body>
+<div class="countdown">
+    <label id="hrtext">小時</label>
+    <label id="mintext">分鐘</label>
+    <label id="sectext">秒</label>
+    <input type="number" id="hours" min="0" max="99" value="00" >
+    <input type="number" id="minutes" min="0" max="60" value="00" ><p id="p1" class="point">:</p>
+    <input type="number" id="seconds" min="1" max="60" value="00"><p id="p2" class="point">:</p>
+  
+    <button id="start" onclick="startcountdown()">開始</button>
+    <button id="stop" onclick="stop()">清除</button>
+</div>
+    <script>
+      var start=document.getElementById("start");
+      var clear=document.getElementById("clear");
+
+      var h=document.getElementById("hours");
+      var m=document.getElementById("minutes");
+      var s=document.getElementById("seconds");
+
+      var starttimer=null;
+
+    function timer() {
+    document.getElementById("start");
+      if(s.value ==0 && m.value==0 && h.value==0){
+        let audio=new Audio("clock.mp3");
+        audio.play();
+      document.getElementById("hours").value=0;
+      document.getElementById("minutes").value=0;
+      document.getElementById("seconds").value=0;
+      clear();
+        
+        function clear() {
+          clearInterval(starttimer);
+        }
+    }
+    else if(s.value!=0){
+      s.value--;
+    }
+    else if(m.value!=0 && s.value==0){
+      s.value=59;
+      m.value--;
+    }
+    else if(h.value!=0 && m.value==0 && s.value==0){
+      s.value=59;
+      m.value=59;
+      h.value--;
+    }
+    return;
+}
+      function startcountdown() {
+        if(h.value>99 || m.value>60 || s.value>60){
+        alert("請輸入正確數值!");
+        return
+        }
+        else if(h.value<0 || m.value<0 || s.value<0){
+          alert("請輸入正確數值!")
+        return;
+        }
+        else{
+          alert("請物關閉視窗")
+        }
+        starttimer=setInterval(function () {
+          timer();
+        },1000);
+        
+      }
+      function stop() {
+      document.getElementById("hours").value=0;
+      document.getElementById("minutes").value=0;
+      document.getElementById("seconds").value=0;
+      }
+       
+    </script>
+</body>
+</html>

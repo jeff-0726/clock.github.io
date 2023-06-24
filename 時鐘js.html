@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 時鐘</title>
+    <link rel="stylesheet" href="Untitled-1.css">
+</head>
+<body>
+    <p><a href="倒計時js.html"target="_blank" style="color: lightgreen;position:absolute;left:1%; top:1%;">計時</a></p>
+
+    <!--digital clock-->
+
+    <h1 id="time" style="font-size: 40px; color: #00ffff; position:absolute;left:33%; top:12.5%  "></h1>
+    <h2 id="day" style="font-size: 31px; color: #00ffff; position:absolute;left:56%; top:13% ;" ></h2>
+    <h2 id="week" style="font-size: 30px; color: #00ffff; position:absolute;left:47%; top:13% ;" ></h2>
+
+    <!--real clock-->
+    <div class="clock">
+        <div class="hand hour data-hour-hand"></div>
+        <div class="hand minute data-minute-hand"></div>
+        <div class="hand second data-second-hand"></div>
+
+        <span style="--i:1"><label>1</label></span>
+        <span style="--i:2"><label>2</label></span>
+        <span style="--i:3"><label class="special">3</label></span>
+        <span style="--i:4"><label>4</label></span>
+        <span style="--i:5"><label>5</label></span>
+        <span style="--i:6"><label class="special">6</label></span>
+        <span style="--i:7"><label>7</label></span>
+        <span style="--i:8"><label>8</label></span>
+        <span style="--i:9"><label class="special">9</label></span>
+        <span style="--i:10"><label>10</label></span>
+        <span style="--i:11"><label>11</label></span>
+        <span style="--i:12"><label class="special">12</label></span>
+    </div>
+    <script>
+    //digital clock js
+    setInterval(displayclock,1000);
+    function displayclock() {
+        var time=new Date();
+        var hrs=time.getHours();
+        var min=time.getMinutes();
+        var sec=time.getSeconds();
+        
+        if(hrs>23){
+            hrs=hrs-24;
+        }
+        if(hrs<10){
+            hrs="0"+hrs
+        }
+        if(min<10){
+            min="0"+min
+        }
+        if(sec<10){
+            sec="0"+sec
+        }
+
+       document.getElementById('time').innerHTML=hrs+":"+min+":"+sec;
+
+      
+    }
+    var today=new Date();
+    const daynumber=today.getDate();
+    const mm=today.getMonth()+1;
+    const yy=today.getFullYear();
+    document.getElementById('day').innerHTML=+daynumber+"日"+(mm)+"月"+yy+"年";
+
+    var today=new Date();
+       var weekdays=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+       var week=weekdays[today.getDay()];
+    document.getElementById('week').innerHTML=week;
+
+     
+
+    // real clock js
+    const deg = 6;
+
+        const hr = document.querySelector('#hr');
+
+        const mn = document.querySelector('#mn');
+
+        const sc = document.querySelector('#sc');
+
+        const hourHand=document.querySelector('.data-hour-hand');
+const minuteHand=document.querySelector('.data-minute-hand');
+const secondHand=document.querySelector('.data-second-hand');
+setInterval(setClock,1000);
+
+function setClock() {
+    const currentDate=new Date();
+    const secondsRatio= currentDate.getSeconds()/60
+    // 分數要再加入當前的秒數。ex:12分12秒為 0.22份
+    const minutesRatio= (secondsRatio+currentDate.getMinutes())/60
+    // 時數要再加入當前的分數，但時鐘為 12 小時一圈，故除以12
+    const hourRatio= (minutesRatio+currentDate.getHours())/12
+    setRotation(secondHand,secondsRatio)
+    setRotation(minuteHand,minutesRatio)
+    setRotation(hourHand,hourRatio)
+}
+// 角度
+function setRotation(element,rotationRatio) {
+    element.style.setProperty('--rotation',rotationRatio*360)
+}
+
+        </script>
+</body>
+</html>
