@@ -1,3 +1,6 @@
+.digital_clock{
+   justify-content: space-around;
+}
 .clock{
     width: 350px;
     height: 350px;
