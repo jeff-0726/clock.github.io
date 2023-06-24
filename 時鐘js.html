@@ -7,12 +7,20 @@
     <link rel="stylesheet" href="Untitled-1.css">
 </head>
 <body>
-    <p><a href="倒計時js.html"target="_blank" style="color: lightgreen;position:absolute;left:1%; top:1%;">計時</a></p>
+    <p><a href="倒計時js.html"target="_blank" style="color: lightgreen;position:absolute;left:1%; top:2%;">計時</a></p>
 
     <!--digital clock-->
-    <h1 id="time" style="font-size: 40px; color: #00ffff; position:absolute;left:45%; top:8%  "></h1>
-    <h2 id="day" style="font-size: 31px; color: #00ffff; position:absolute;left:40%; top:15% ;" ></h2>
-    <h2 id="week" style="font-size: 30px; color: #00ffff; position:absolute;left:55%; top:15% ;" ></h2>
+<div class="digital_clock">
+    <h1 id="time" class="time"></h1>
+
+    <div class="day">
+    <span id="day" ></span>
+    <span id="week" ></span>
+    </div>
+</div>
+
+
+
 
     <!--real clock-->
     <div class="clock">
@@ -29,7 +37,7 @@
         <span style="--i:7"><label>7</label></span>
         <span style="--i:8"><label>8</label></span>
         <span style="--i:9"><label class="special">9</label></span>
-        <span style="--i:10"><label>10</label></span>
+        <span style="--i:10"><label>10</label></span>   
         <span style="--i:11"><label>11</label></span>
         <span style="--i:12"><label class="special">12</label></span>
     </div>
