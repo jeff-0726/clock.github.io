@@ -19,6 +19,7 @@
     <button id="stop" onclick="stop()">清除</button>
 </div>
     <script>
+    //define the variable
       var start=document.getElementById("start");
       var clear=document.getElementById("clear");
 
@@ -56,6 +57,7 @@
     }
     return;
 }
+      //input the time
       function startcountdown() {
         if(h.value>99 || m.value>60 || s.value>60){
         alert("請輸入正確數值!");
@@ -73,10 +75,16 @@
         },1000);
         
       }
+     //clear time
       function stop() {
       document.getElementById("hours").value=0;
       document.getElementById("minutes").value=0;
       document.getElementById("seconds").value=0;
+       clear();
+        function clear() {
+          clearInterval(starttimer);
+        }
+          
       }
        
     </script>
