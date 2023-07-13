@@ -100,3 +100,13 @@ button{
     background-color: black;
 }
 
+
+.link1{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100px;
+    color: #00ffff;
+    font-size: 12px;
+    background-color: black;
+}
